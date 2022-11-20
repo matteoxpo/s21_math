@@ -1,0 +1,32 @@
+#ifndef _S21_MATH_H
+#define _S21_MATH_H 1
+
+#define S21_EPSILON (1e-6)
+#define S21_PI (3.14159265359)
+#define S21_E (2.71828182846)
+#define S21_INFINITY (1.0 / 0.0)
+
+long int s21_abs(int x);  // вычисляет модуль целого числа
+long double s21_fabs(double x);  // вычисляет модуль с плавающей точкой
+
+long double s21_ceil(double x);   // округление вверх
+long double s21_floor(double x);  // округление вниз
+
+long double s21_exp(double x);  // возвращает e, возведенное в степень x
+long double s21_pow(double base, double exp);  // возводит число в степень
+long double s21_powi(double base, int exp);  // возводит число в целую степень
+long double s21_sqrt(double x);  // вычисляет квадратный корень
+
+long double s21_fmod(double x, double y);  // остаток от деления double
+
+long double s21_log(double x);  // вычисляет натуральный логарифм
+
+long double s21_acos(double x);  // вычисляет арккосинус
+long double s21_asin(double x);  // вычисляет арксинус
+long double s21_atan(double x);  // вычисляет арктангенс
+
+long double s21_sin(double x);  // вычисляет синус
+long double s21_cos(double x);  // вычисляет косинус
+long double s21_tan(double x);  // вычисляет тангенс
+
+#endif  // _S21_MATH_H
