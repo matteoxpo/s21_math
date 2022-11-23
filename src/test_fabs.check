@@ -1,0 +1,6 @@
+#include <stdlib.h>
+#include "s21_fabs.c"
+
+#test fabs_test
+x = -25
+ck_assert_uint_eq(s21_fabs(x), fabs(x));
