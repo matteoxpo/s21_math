@@ -18,12 +18,11 @@ s21_math.a: $(OBJECTS) s21_math.h
 
 %.test: %.check s21_math.a
 	checkmk $< > $@.c
-	$(CC) -c $@.c -o $@.o
-	$(CC) $@.o -L. -lcheck -ls21_math -o $@
-	rm -f $@.c $@.o
+	$(CC) $@.c -L. -lcheck -lm -ls21_math -o $@
+	rm -f $@.c
+	./$@
 
 test: $(TESTS)
-	$(foreach test, $(TESTS), ./$(test))
 
 clean:
-	rm -f *.a *.o *.test
+	rm -f *.a *.o *.test *.test.c
