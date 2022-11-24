@@ -1,0 +1,9 @@
+#include <check.h>
+#include <math.h>
+
+#include "s21_math.h"
+
+#test s21_ceil_test
+for (double i = -1000; i <= 10000; i += 0.1) {
+  ck_assert_double_eq_tol(ceil(i), s21_ceil(i), S21_EPSILON);
+}
