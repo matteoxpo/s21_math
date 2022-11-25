@@ -1,9 +1,0 @@
-{
-  "files.associations": {
-    "complex": "c",
-    "cmath": "c",
-    "s21_math.h": "c",
-    "math.h": "c",
-    "stdio.h": "c"
-  }
-}
