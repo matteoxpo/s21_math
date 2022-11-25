@@ -1,0 +1,18 @@
+#include <check.h>
+#include <math.h>
+
+#include "s21_math.h"
+
+#test s21_fmod_test
+
+for (double i = 0; i <= 100000; i += S21_E) {
+  ck_assert_double_eq_tol(fmod(i, 1), s21_fmod(i, 1), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(-i, 1), s21_fmod(-i, 1), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(i, S21_PI), s21_fmod(i, S21_PI), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(-i, S21_PI), s21_fmod(-i, S21_PI), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(i, -1), s21_fmod(i, -1), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(-i, -1), s21_fmod(-i, -1), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(i, -S21_PI), s21_fmod(i, -S21_PI), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(-i, -S21_PI), s21_fmod(-i, -S21_PI),
+                          S21_EPSILON);
+}

@@ -11,14 +11,15 @@ rebuild: clean all
 
 s21_math.a: $(OBJECTS) s21_math.h
 	ar rc lib$@ $(OBJECTS)
-	ranlib lib$@
+	ranlib -D lib$@
 
 %.o: %.c
 	$(CC) -c $^ -o $@
 
 %.test: %.check s21_math.a
+	rm -f $@.c
 	checkmk $< > $@.c
-	$(CC) $@.c -L. -lcheck -lm -ls21_math -o $@
+	$(CC) $@.c -L. -lm -ls21_math -o $@ -lcheck 
 	rm -f $@.c
 	./$@
 
