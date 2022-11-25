@@ -1,0 +1,10 @@
+#include <check.h>
+#include <math.h>
+#include <stdio.h>
+
+#include "s21_math.h"
+
+#test s21_cos_test
+for (double i = -100; i <= 100; i += 0.1) {
+  ck_assert_double_eq_tol(cosl(i), s21_cos(i), S21_EPSILON);
+}
