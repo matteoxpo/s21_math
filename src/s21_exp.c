@@ -18,6 +18,7 @@ long double s21_exp(double x) {
   }
   return series;
 }
+
 /*long double abs_x = s21_fabs(x);
   long double x_n = 1;
   long double n_fact = 1;
