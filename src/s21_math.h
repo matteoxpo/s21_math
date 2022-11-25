@@ -14,6 +14,8 @@ long double s21_fabs(double x);  // вычисляет модуль с плав�
 long double s21_ceil(double x);   // округление вверх
 long double s21_floor(double x);  // округление вниз
 
+double s21_max(double x, double y);  //возвращает максимум
+
 long double s21_exp(double x);  // возвращает e, возведенное в степень x
 long double s21_pow(double base, double exp);  // возводит число в степень
 long double s21_powi(double base,
