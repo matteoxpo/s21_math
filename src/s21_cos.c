@@ -14,7 +14,6 @@ long double s21_cos(double x) {
   }
   for (register int i = 0; i < 150; i++) {
     sum_cos += s21_powi(-1, i) * s21_powi(x, 2 * i) / s21_factorial(2 * i);
-    printf("%lf", &sum_cos);
   }
   return sum_cos;
 }

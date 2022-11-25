@@ -15,7 +15,6 @@ long double s21_sin(double x) {
   for (register int i = 0; i < 150; i++) {
     sum_sin +=
         s21_powi(-1, i) * s21_powi(x, 2 * i + 1) / s21_factorial(2 * i + 1);
-    printf("%lf", &sum_sin);
   }
   return sum_sin;
 }
