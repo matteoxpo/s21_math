@@ -2,6 +2,7 @@
 #include "s21_fabs.c"
 
 #test fabs_test
-
 int x = -25;
+ck_assert_uint_eq(s21_fabs(x), fabs(x));
+x = 25;
 ck_assert_uint_eq(s21_fabs(x), fabs(x));
