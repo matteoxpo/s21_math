@@ -1,0 +1,11 @@
+#include <check.h>
+#include <math.h>
+#include <stdio.h>
+
+#include "s21_math.h"
+
+#test s21_exp_test
+// e ^ 30 > 10 ^ 13; e ^ -15 < 10 ^ -6
+for (double i = -30; i <= 60; i += 0.1) {
+  ck_assert_double_eq_tol(expl(i), s21_exp(i), S21_EPSILON);
+}

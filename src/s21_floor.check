@@ -1,0 +1,10 @@
+#include <check.h>
+#include <math.h>
+#include <stdio.h>
+
+#include "s21_math.h"
+
+#test s21_floor_test
+for (double i = -1000; i <= 10000; i += 0.1) {
+  ck_assert_double_eq_tol(floor(i), s21_floor(i), S21_EPSILON);
+}

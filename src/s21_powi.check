@@ -1,0 +1,12 @@
+#include <check.h>
+#include <math.h>
+#include <stdio.h>
+
+#include "s21_math.h"
+
+#test test_s21_powi
+for (unsigned int i = 0; i < 10; i++) {
+  for (double j = 0; j < 3; j += 0.01) {
+    ck_assert_ldouble_eq_tol(s21_powi(j, i), powl(j, i), S21_EPSILON);
+  }
+}

@@ -1,0 +1,13 @@
+#include <check.h>
+#include <math.h>
+#include <stdio.h>
+
+#include "s21_math.h"
+
+#test test_s21_pow
+for (unsigned int i = 0; i < 15; i++) {
+  for (double j = 0; j <= 30; j += 0.1) {
+    printf("%u %.3lf %.10Lf\n", i, j, pow(j, i) - s21_pow(j, i));
+    ck_assert_ldouble_eq_tol(s21_pow(j, i), pow(j, i), S21_EPSILON);
+  }
+}
