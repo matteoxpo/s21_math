@@ -2,7 +2,8 @@
 #define _S21_MATH_H 1
 
 #define S21_EPSILON (1e-6)
-#define S21_VERY_SMALL_EPSILON (1e-9)
+#define S21_VERY_SMALL_EPSILON (1e-11)
+#define S21_VERY_VERY_SMALL_EPSILON (1e-26)
 #define S21_PI (3.14159265358979323846264338327950288)
 #define S21_E (2.71828182845904523536028747135266250)
 #define S21_INFINITY (1.0 / 0.0)
@@ -10,6 +11,9 @@ double S21_NAN();
 
 long int s21_abs(int x);  // вычисляет модуль целого числа
 long double s21_fabs(double x);  // вычисляет модуль с плавающей точкой
+
+long double s21_signl(double x);  // возвращает знак
+int s21_isInt(long double x);  // возвращает является ли число целым
 
 long double s21_ceil(double x);   // округление вверх
 long double s21_floor(double x);  // округление вниз

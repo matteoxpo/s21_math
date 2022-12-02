@@ -5,10 +5,15 @@
 #include "s21_math.h"
 
 #test test_s21_pow
-/*for (unsigned int i = 0; i < 15; i++) {
+for (double i = -5; i < 15; i++) {
   for (double j = 0; j <= 30; j += 0.1) {
-    printf("%u %.3lf %.10Lf\n", i, j, pow(j, i) - s21_pow(j, i));
-    ck_assert_ldouble_eq_tol(s21_pow(j, i), pow(j, i), S21_EPSILON);
+    long double s21_res = s21_pow(i, j);
+    long double res = pow(i, j);
+    long double diff = res - s21_res;
+    printf(
+        "base == %.10lf\nexp == %.10lf\ns21_pow == %.10Lf\npow == %.10Lf\n"
+        "diff == %.10Lf\n\n",
+        i, j, s21_res, res, diff);
+    ck_assert_ldouble_eq_tol(s21_res, res, S21_EPSILON);
   }
 }
-*/

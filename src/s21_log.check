@@ -7,14 +7,16 @@
 #test s21_log_test
 
 for (double i = 0.01; i <= 1000; i += 0.1) {
-  ck_assert_double_eq_tol(logl(i), s21_log(i), S21_EPSILON);
+  long double s21_res = s21_log(i);
+  long double res = log(i);
+  printf("s21_res == %Lf\nres == %Lf\n\n", s21_res, res);
+
+  ck_assert_double_eq_tol(res, s21_res, S21_EPSILON);
 }
 #test s21_log_test_zero
 ck_assert_double_eq(logl(0), s21_log(0));
-
 
 /*#test s21_log_test_lesszero
 for (double i = -10; i < 0; i += 0.1) {
   ck_assert_double_eq(logl(i), s21_log(i));
 }*/
-

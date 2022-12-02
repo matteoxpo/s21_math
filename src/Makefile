@@ -9,6 +9,8 @@ all: s21_math.a
 
 rebuild: clean all
 
+re: rebuild
+
 s21_math.a: $(OBJECTS) s21_math.h
 	ar rc lib$@ $(OBJECTS)
 	ranlib -D lib$@
