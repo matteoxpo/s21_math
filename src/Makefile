@@ -25,7 +25,9 @@ s21_math.a: $(OBJECTS) s21_math.h
 	rm -f $@.c
 	./$@
 
-test: $(TESTS)
+test: s21_math.a 
+	$(CC) libs21_math.a tests.c -lcheck -o test
+	./test
 
 clean:
-	rm -f *.a *.o *.test *.test.c
+	rm -f *.a *.o

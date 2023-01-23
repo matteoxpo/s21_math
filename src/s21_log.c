@@ -6,7 +6,7 @@ long double s21_log(double x) {
   if (x > S21_EPSILON) {
     result = 0;
     double compare = 0;
-    for (; x >= S21_E; x /= S21_E, ex_pow++) continue;
+    for (; x >= S21_EXP; x /= S21_EXP, ex_pow++) continue;
 
     for (int i = 0; i < 200; i++) {
       compare = result;
