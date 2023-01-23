@@ -6,7 +6,6 @@
 long double s21_exp(double x) {
   long double siries_member = 1;
   long double series = 1.0;
-  long double i = 1;
 
   double sign = s21_signl(x);
   x = s21_fabs(x);

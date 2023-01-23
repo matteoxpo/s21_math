@@ -1,33 +1,55 @@
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra 
+
+GKOVFLAGS = -lgcov --coverage
+LINFLAG = -lm -lpthread -lsubunit -lrt
+CHECKFLAGS = -lcheck
+OS = $(shell uname)
+ifeq ($(OS), Linux)
+CHECKFLAGS += -lm -lpthread -lsubunit -lrt
+endif
 SOURCES = $(wildcard *.c)
-TESTS_SOURSES = $(wildcard *.check)
-TESTS = $(TESTS_SOURSES:.check=.test)
 OBJECTS = $(SOURCES:.c=.o)
+TESTS_SOURSES = $(wildcard ./tests/*.check)
+CFLAGS_GCOV =-fprofile-arcs --coverage
 
 all: s21_math.a
 
 rebuild: clean all
 
-re: rebuild
-
 s21_math.a: $(OBJECTS) s21_math.h
-	ar rc lib$@ $(OBJECTS)
-	ranlib -D lib$@
+	ar rc $@ $(OBJECTS)
+	ranlib -D $@
 
-%.o: %.c
-	$(CC) -c $^ -o $@
+lib_cov.a: $(SOURCES) s21_math.h
+	echo "asdasd"
+	$(CC) $(CFLAGS) $(CFLAGS_GCOV) -c  $(SOURCES)
+	ar rc lib_cov.a $(OBJECTS)
+	ranlib lib_cov.a
 
-%.test: %.check s21_math.a
-	rm -f $@.c
-	checkmk $< > $@.c
-	$(CC) $@.c -L. -lm -ls21_math -o $@ -lcheck 
-	rm -f $@.c
-	./$@
-
-test: s21_math.a 
-	$(CC) libs21_math.a tests.c -lcheck -o test
+test: clean $(TESTS_SOURSES) s21_math.a
+	@checkmk clean_mode=1 ./s21_math.h $(TESTS_SOURSES) > test.c
+	$(CC) test.c $(CHECKFLAGS) -lm s21_math.a -o test
 	./test
 
+gcov_report: clean $(TESTS_SOURSES) lib_cov.a
+	checkmk clean_mode=1 $(TESTS_SOURSES) > test.c
+	$(CC)  test.c -c
+	$(CC)  test.o -g $(CHECKFLAGS) lib_cov.a -o test $(GKOVFLAGS)
+	./test > /dev/null
+	lcov -t "t" -o test.info -c -d . 
+	genhtml -o report test.info 
+	open ./report/index.html
+	rm -f test.c
+
+style:
+	cp ../materials/linters/.clang-format .
+	clang-format -i *.c
+	clang-format -n *.c
+	rm .clang-format
+
+leaks: test
+	leaks -atExit -- ./test
+
 clean:
-	rm -f *.a *.o
+	rm -rf *.a *.o *.test *test.c .test.c *.gcda *.gcno *.info test.c report a.out test
