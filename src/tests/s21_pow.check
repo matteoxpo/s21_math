@@ -17,6 +17,14 @@ for (double i = -5; i < 5; i++) {
     }
   }
 }
+
+ck_assert_ldouble_nan(s21_pow(NAN, 123));
+
+
+ck_assert_ldouble_eq_tol(s21_pow(-2, -2), pow(-2, -2),
+                         S21_EPSILON);
+
+
 ck_assert_ldouble_eq_tol(s21_pow(87.1, -INFINITY), pow(87.1, -INFINITY),
                          S21_EPSILON);
 ck_assert_ldouble_eq_tol(s21_pow(0.999, INFINITY), 0, S21_EPSILON);

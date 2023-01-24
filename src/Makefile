@@ -8,7 +8,7 @@ OS = $(shell uname)
 ifeq ($(OS), Linux)
 CHECKFLAGS += -lm -lpthread -lsubunit -lrt
 endif
-SOURCES = $(wildcard *.c)
+SOURCES = $(wildcard s21_*.c)
 OBJECTS = $(SOURCES:.c=.o)
 TESTS_SOURSES = $(wildcard ./tests/*.check)
 CFLAGS_GCOV =-fprofile-arcs --coverage

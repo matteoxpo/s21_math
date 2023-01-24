@@ -13,4 +13,3 @@ long double s21_fmod(double x, double y) {
 
   return result;
 }
-long double s21_fdiv(double x, double y) { return y * (long long)(x / y); }
