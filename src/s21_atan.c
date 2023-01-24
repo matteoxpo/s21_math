@@ -5,17 +5,17 @@ static long double s21_atan_taylor(double x);
 long double s21_atan(double x) {
   long double ret_val = 0;
   if (x < -1) {
-    ret_val = -(S21_M_PI / 2 + s21_atan_taylor(1.0 / x));
-  } else if (x == 0.0) {
+    ret_val = -(S21_M_PI / 2.0 + s21_atan_taylor(1.0 / x));
+  } else if (s21_fabs(s21_fabs(x) - 1.0) < S21_EPSILON / 10.0) {
+    ret_val = s21_signl(x) * 0.785398163397448;
+  } else if (s21_fabs(x) < S21_EPSILON * 10) {
     ret_val = 0.0;
+    // } else if (x + 1 < S21_EPSILON / 10) {
+    // ret_val = 0.785398163397448;
   } else if (x < 1 && x > -1) {
     ret_val = s21_atan_taylor(x);
-  } else if (x == 1) {
-    ret_val = 0.785398163397448;
-  } else if (x == -1) {
-    ret_val = -0.785398163397448;
   } else {
-    ret_val = S21_M_PI / 2 - s21_atan_taylor(1.0 / x);
+    ret_val = S21_M_PI / 2.0 - s21_atan_taylor(1.0 / x);
   }
   return ret_val;
 }

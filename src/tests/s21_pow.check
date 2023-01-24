@@ -5,11 +5,16 @@
 #include "s21_math.h"
 
 #test test_s21_pow
-for (double i = 5; i < 15; i++) {
-  for (double j = 0; j <= 30; j += 0.1) {
+for (double i = -5; i < 5; i++) {
+  for (double j = 0; j <= 10; j += 0.1) {
     long double s21_res = s21_pow(i, j);
     long double res = pow(i, j);
-    long double diff = res - s21_res;
-    //ck_assert_ldouble_eq_tol(s21_res, res, 100);
+    long double eps = pow(10, floor(log10l(fabsl(res))) - 16);
+    if (s21_isNan(res) && s21_isNan(s21_res)) {
+      ck_assert_int_eq(1, 1);
+    } else {
+      if (eps < 1e-6) eps = 1e-6;
+      ck_assert_ldouble_eq_tol(s21_res, res, eps);
+    }
   }
 }

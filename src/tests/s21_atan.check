@@ -4,7 +4,15 @@
 
 #include "s21_math.h"
 
-#test s21_atan_test
-for (double i = 0; i <= 0; i += 0.1) {
-  ck_assert_double_eq_tol(atanl(i), s21_atan(i), S21_EPSILON * 10);
-}
+ck_assert_ldouble_eq_tol(s21_atan(42352), atan(42352), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(-35363), atan(-35363), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(0), atan(0), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(-1), atan(-1), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(1), atan(1), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(0.666666), atan(0.666666), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(-0.333333), atan(-0.333333), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(57434.574554256), atan(57434.574554256),
+                         S21_EPSILON);
+ck_assert_ldouble_nan(s21_atan(NAN));
+ck_assert_ldouble_eq_tol(s21_atan(INFINITY), atan(INFINITY), S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_atan(-INFINITY), atan(-INFINITY), S21_EPSILON);

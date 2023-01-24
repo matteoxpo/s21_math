@@ -5,6 +5,10 @@
 #include "s21_math.h"
 
 #test s21_exp_test
-for (double i = -100; i < -50; i += 0.5) {
-  ck_assert_ldouble_eq_tol(s21_exp(i), expl(i), S21_EPSILON);
+for (double i = -100; i < 30.5; i += 0.5) {
+  long double sys_exp = expl(i);
+  long double my_exp = s21_exp(i);
+  long double eps = pow(10, log10l(sys_exp) - 16);
+  if (eps < 1e-6) eps = 1e-6;
+  ck_assert_ldouble_eq_tol(s21_exp(i), expl(i), eps);
 }
