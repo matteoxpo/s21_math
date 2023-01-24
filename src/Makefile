@@ -13,7 +13,7 @@ OBJECTS = $(SOURCES:.c=.o)
 TESTS_SOURSES = $(wildcard ./tests/*.check)
 CFLAGS_GCOV =-fprofile-arcs --coverage
 
-all: clean style clean tests clean gcov_report clean s21_math.a
+all: s21_math.a
 
 rebuild: clean all
 
