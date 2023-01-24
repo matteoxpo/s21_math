@@ -1,6 +1,7 @@
-#include <stdlib.h>
+#include <check.h>
+#include <math.h>
 
-#include "s21_fabs.c"
+#include "s21_math.h"
 
 #test fabs_test
 int x = -25;

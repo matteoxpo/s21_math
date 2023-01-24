@@ -2,8 +2,8 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra 
 
 GKOVFLAGS = -lgcov --coverage
-LINFLAG = -lm -lpthread -lsubunit -lrt
 CHECKFLAGS = -lcheck
+
 OS = $(shell uname)
 ifeq ($(OS), Linux)
 CHECKFLAGS += -lm -lpthread -lsubunit -lrt
@@ -14,7 +14,6 @@ TESTS_SOURSES = $(wildcard ./tests/*.check)
 CFLAGS_GCOV =-fprofile-arcs --coverage
 
 all: clean style clean tests clean gcov_report clean s21_math.a
-
 
 rebuild: clean all
 
