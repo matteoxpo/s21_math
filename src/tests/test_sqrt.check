@@ -6,3 +6,6 @@
 for (int i = 0; i < 100; i++) {
   ck_assert_double_eq_tol(s21_sqrt(i), sqrt(i), S21_EPSILON);
 }
+ck_assert_ldouble_nan(s21_sqrt(NAN));
+ck_assert_double_infinite(s21_sqrt(INFINITY));
+ck_assert_double_nan(s21_sqrt(-INFINITY));

@@ -15,6 +15,8 @@ CFLAGS_GCOV =-fprofile-arcs --coverage
 
 all: s21_math.a
 
+all_tests: clean style clean tests clean gcov_report clean
+
 rebuild: clean all
 
 s21_math.a: $(OBJECTS) s21_math.h
@@ -22,7 +24,6 @@ s21_math.a: $(OBJECTS) s21_math.h
 	ranlib -D $@
 
 lib_cov.a: $(SOURCES) s21_math.h
-	echo "asdasd"
 	$(CC) $(CFLAGS) $(CFLAGS_GCOV) -c  $(SOURCES)
 	ar rc lib_cov.a $(OBJECTS)
 	ranlib lib_cov.a
@@ -44,12 +45,12 @@ gcov_report: clean $(TESTS_SOURSES) lib_cov.a
 
 style:
 	cp ../materials/linters/.clang-format .
-	clang-format -i *.c
-	clang-format -n *.c
+	clang-format -i *.c *.h
+	clang-format -n *.h *.c
 	rm .clang-format
 
 leaks: test
 	leaks -atExit -- ./test
 
 clean:
-	rm -rf *.a *.o *.test *test.c .test.c *.gcda *.gcno *.info test.c report a.out test
+	rm -rf *.a *.o *.test *test.c .test.c *.gcda *.gcno *.info test.c report a.out test report

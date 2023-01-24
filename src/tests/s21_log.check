@@ -13,3 +13,6 @@ for (double i = 0.01; i <= 1000; i += 0.1) {
 
 #test s21_log_test_zero
 ck_assert_double_eq(logl(0), s21_log(0));
+ck_assert_ldouble_nan(s21_log(NAN));
+ck_assert_ldouble_nan(s21_log(-INFINITY));
+ck_assert_ldouble_infinite(s21_log(INFINITY));

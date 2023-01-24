@@ -10,3 +10,6 @@ for (unsigned int i = -10; i < 10; i++) {
     ck_assert_ldouble_eq_tol(s21_powi(j, i), powl(j, i), S21_EPSILON);
   }
 }
+ck_assert_ldouble_nan(s21_powi(NAN, 1));
+ck_assert_double_infinite(s21_powi(INFINITY, 1));
+ck_assert_double_infinite(-1 * s21_powi(-INFINITY, 1));

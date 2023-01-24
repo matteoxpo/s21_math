@@ -9,9 +9,7 @@ long double s21_powi(double base, unsigned int exp) {
 
   for (; mask; mask = mask >> 1) {
     result *= result;
-    if (exp & mask) {
-      result *= base;
-    }
+    if (exp & mask) result *= base;
   }
   return result;
 }

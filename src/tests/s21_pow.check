@@ -18,3 +18,13 @@ for (double i = -5; i < 5; i++) {
     }
   }
 }
+ck_assert_ldouble_eq_tol(s21_pow(87.1, -INFINITY), pow(87.1, -INFINITY),
+                         S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_pow(0.999, INFINITY), 0, S21_EPSILON);
+ck_assert_ldouble_infinite(s21_pow(14.88, INFINITY));
+ck_assert_ldouble_eq_tol(s21_pow(-INFINITY, -43), pow(-INFINITY, -43),
+                         S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_pow(-43.23, -INFINITY), pow(-43.23, -INFINITY),
+                         S21_EPSILON);
+ck_assert_ldouble_eq_tol(s21_pow(-INFINITY, -43.23), pow(-INFINITY, -43.23),
+                         S21_EPSILON);

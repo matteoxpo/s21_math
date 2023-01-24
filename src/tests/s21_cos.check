@@ -8,3 +8,6 @@
 for (double i = -100; i <= 100; i += 0.1) {
   ck_assert_double_eq_tol(cosl(i), s21_cos(i), S21_EPSILON);
 }
+ck_assert_ldouble_nan(s21_cos(NAN));
+ck_assert_double_nan(s21_cos(INFINITY));
+ck_assert_double_nan(s21_cos(-INFINITY));

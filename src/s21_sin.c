@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 #include "s21_math.h"
 
 long double s21_sin(double x) {
@@ -8,11 +6,10 @@ long double s21_sin(double x) {
     sum_sin = S21_NAN();
   } else {
     for (; x < -2 * S21_M_PI || 2 * S21_M_PI < x;) {
-      if (x > 2 * S21_M_PI) {
+      if (x > 2 * S21_M_PI)
         x -= 2 * S21_M_PI;
-      } else {
+      else
         x += 2 * S21_M_PI;
-      }
     }
     for (register int i = 0; i < 150; i++) {
       sum_sin +=

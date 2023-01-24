@@ -12,3 +12,6 @@ for (double i = -100; i < 30.5; i += 0.5) {
   if (eps < 1e-6) eps = 1e-6;
   ck_assert_ldouble_eq_tol(s21_exp(i), expl(i), eps);
 }
+ck_assert_ldouble_nan(s21_exp(NAN));
+ck_assert_int_eq(s21_exp(INFINITY), exp(INFINITY));
+ck_assert_ldouble_eq_tol(s21_exp(-INFINITY), exp(-INFINITY), S21_EPSILON);

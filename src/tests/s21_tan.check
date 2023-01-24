@@ -8,3 +8,6 @@
 for (double i = -100; i <= 100; i += 0.1) {
   ck_assert_double_eq_tol(tanl(i), s21_tan(i), S21_EPSILON);
 }
+ck_assert_ldouble_nan(s21_tan(NAN));
+ck_assert_double_nan(s21_tan(INFINITY));
+ck_assert_double_nan(s21_tan(-INFINITY));

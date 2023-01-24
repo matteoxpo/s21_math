@@ -9,9 +9,11 @@ long double s21_log(double x) {
   } else if (x == -S21_INFINITY) {
     result = S21_NAN();
   } else if (x > S21_EPSILON) {
-    result = 0;
     double compare = 0;
-    for (; x >= S21_E; x /= S21_E, ex_pow++) continue;
+    while (x >= S21_E) {
+      ex_pow++;
+      x /= S21_E;
+    }
 
     for (int i = 0; i < 200; i++) {
       compare = result;

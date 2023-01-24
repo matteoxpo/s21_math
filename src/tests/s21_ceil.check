@@ -7,3 +7,6 @@
 for (double i = -1000; i <= 10000; i += 0.1) {
   ck_assert_double_eq_tol(ceil(i), s21_ceil(i), S21_EPSILON);
 }
+ck_assert_ldouble_nan(s21_ceil(NAN));
+ck_assert_ldouble_eq(s21_ceil(INFINITY), ceil(INFINITY));
+ck_assert_ldouble_eq(s21_ceil(-INFINITY), ceil(-INFINITY));

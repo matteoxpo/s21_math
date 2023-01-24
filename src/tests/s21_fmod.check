@@ -8,11 +8,17 @@
 for (double i = 0; i <= 100000; i += S21_E) {
   ck_assert_double_eq_tol(fmod(i, 1), s21_fmod(i, 1), S21_EPSILON);
   ck_assert_double_eq_tol(fmod(-i, 1), s21_fmod(-i, 1), S21_EPSILON);
-  ck_assert_double_eq_tol(fmod(i, S21_PI), s21_fmod(i, S21_PI), S21_EPSILON);
-  ck_assert_double_eq_tol(fmod(-i, S21_PI), s21_fmod(-i, S21_PI), S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(i, S21_M_PI), s21_fmod(i, S21_M_PI),
+                          S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(-i, S21_M_PI), s21_fmod(-i, S21_M_PI),
+                          S21_EPSILON);
   ck_assert_double_eq_tol(fmod(i, -1), s21_fmod(i, -1), S21_EPSILON);
   ck_assert_double_eq_tol(fmod(-i, -1), s21_fmod(-i, -1), S21_EPSILON);
-  ck_assert_double_eq_tol(fmod(i, -S21_PI), s21_fmod(i, -S21_PI), S21_EPSILON);
-  ck_assert_double_eq_tol(fmod(-i, -S21_PI), s21_fmod(-i, -S21_PI),
+  ck_assert_double_eq_tol(fmod(i, -S21_M_PI), s21_fmod(i, -S21_M_PI),
+                          S21_EPSILON);
+  ck_assert_double_eq_tol(fmod(-i, -S21_M_PI), s21_fmod(-i, -S21_M_PI),
                           S21_EPSILON);
 }
+ck_assert_ldouble_nan(s21_fmod(NAN, 1));
+ck_assert_double_nan(s21_fmod(INFINITY, 1));
+ck_assert_double_nan(s21_fmod(-INFINITY, 1));
