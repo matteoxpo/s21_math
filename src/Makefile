@@ -47,8 +47,5 @@ style:
 	clang-format -n *.h *.c
 	rm .clang-format
 
-leaks: test
-	leaks -atExit -- ./test
-
 clean:
 	rm -rf *.a *.o *.test *test.c .test.c *.gcda *.gcno *.info test.c report a.out test report
