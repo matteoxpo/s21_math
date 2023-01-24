@@ -1,0 +1,10 @@
+#include <check.h>
+#include <math.h>
+#include <stdio.h>
+
+#include "s21_math.h"
+
+#test s21_atan_test
+for (double i = 0; i <= 0; i += 0.1) {
+  ck_assert_double_eq_tol(atanl(i), s21_atan(i), S21_EPSILON * 10);
+}

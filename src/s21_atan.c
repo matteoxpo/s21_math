@@ -6,6 +6,8 @@ long double s21_atan(double x) {
   long double ret_val = 0;
   if (x < -1) {
     ret_val = -(S21_M_PI / 2 + s21_atan_taylor(1.0 / x));
+  } else if (x == 0.0) {
+    ret_val = 0.0;
   } else if (x < 1 && x > -1) {
     ret_val = s21_atan_taylor(x);
   } else if (x == 1) {
